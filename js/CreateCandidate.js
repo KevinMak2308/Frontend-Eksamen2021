@@ -29,7 +29,7 @@ function createCandidate() {
 function candidateCreated(data) {
   out(arguments)
   out(data)
-  window.location.href = "/Frontend-Eksamen2021/party.html"
+  window.location.href = "../party.html"
 }
 
 function fetchAllParties() {

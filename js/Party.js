@@ -29,16 +29,19 @@ function partyListData(data) {
     option.setAttribute("value", party.partyId);
     dropdown.appendChild(option);
 
-
     dropdown.addEventListener("change",(event) => {
       const selectIndex = dropdown.selectedIndex;
       let optionIndex = dropdown.options[selectIndex]
       party.partyId = optionIndex.value
-      out(optionIndex.value);
       localStorage.setItem("chosenPartyId", optionIndex.value)
 
+      window.location.reload();
+
     })
+
+
   }
+
 }
 
 function fetchParty() {

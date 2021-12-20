@@ -12,7 +12,7 @@ function fetchCandidates() {
 const candidateDivWrapper = document.getElementById('candidateDivWrapper');
 
 function candidateData(data) {
-  for (let i = 0; 0 < data.length; i++) {
+  for (let i = 0; 0 <= data.length; i++) {
 
     const candidate = data[i];
 
@@ -68,7 +68,6 @@ function candidateData(data) {
     candidateLinkDiv.append(updateButton)
 
     updateButton.onclick = function () {
-      localStorage.setItem('chosenPartyId', candidate.party.partyId);
       candidate.candidateName = candidateInput.value;
       updateCandidate(candidate)
     }
@@ -89,7 +88,6 @@ async function updateCandidate(candidate) {
   try {
     const response = await restUpdateCandidate(candidate);
     out(response);
-    window.location.reload();
   } catch (error) {
     out(error);
   }

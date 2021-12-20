@@ -47,7 +47,8 @@
             Party
           </a>
           <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="/Frontend-Eksamen2021/party.html">View Parties</a></li>
+            <li><a class="dropdown-item" href="/Frontend-Eksamen2021/party.html">View Party Candidates</a></li>
+            <li><a class="dropdown-item" href="/Frontend-Eksamen2021/party-vote.html">View Party Voting</a></li>
           </ul>
         </li>
       </ul>
@@ -58,30 +59,23 @@
 
 <!-- Party with Members -->
 <div class="container mt-5" id="partyDivContainer">
-  <div class="input-group form-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fas fa-address-book"></i></span>
-      <select id="selectDropdown" placeholder-text="Customer">
-
-      </select>
-    </div>
-  </div>
   <h2 id="partyTitleName" style="color: whitesmoke"></h2>
-<section>
-  <div class="container emp-profile" id="columnDiv">
-    <table class="display" id="partyCandidatesSectionTable">
-      <thead>
-      <tr>
-        <th> Party </th>
-        <th> Candidate </th>
-      </tr>
-      </thead>
-      <tbody id="partyCandidateTimeTBody">
+  <section>
+    <div class="container emp-profile" id="columnDiv">
+      <table class="display" id="partyCandidatesSectionTable">
+        <thead>
+        <tr>
+          <th> Party </th>
+          <th> Number of Votes </th>
+          <th> Vote Percentage </th>
+        </tr>
+        </thead>
+        <tbody id="partyCandidateTimeTBody">
 
-      </tbody>
-    </table>
-  </div>
-</section>
+        </tbody>
+      </table>
+    </div>
+  </section>
 </div>
 
 <!-- Jquery Scripts -->
@@ -104,7 +98,7 @@
 
 
 <!-- Custom -->
-<script src="js/Party.js"></script>
+<script src="js/PartyVotes.js"></script>
 
 </body>
 </html>

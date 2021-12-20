@@ -12,8 +12,7 @@ function fetchCandidates() {
 const candidateDivWrapper = document.getElementById('candidateDivWrapper');
 
 function candidateData(data) {
-  for (let i = 0; 0 <= data.length; i++) {
-
+  for (let i = 0; i < data.length; i++) {
     const candidate = data[i];
 
     let candidateColDiv = document.createElement('div');

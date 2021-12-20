@@ -1,8 +1,45 @@
 const out = (...str) => console.log(...str);
 const currentPartyId = localStorage.getItem('chosenPartyId');
 
+const allPartyUrl = 'http://localhost:8080/allParties/'
 const partyUrl = 'http://localhost:8080/party/' + currentPartyId;
 const partyCandidatesUrl = 'http://localhost:8080/partyCandidates/' + currentPartyId
+
+function fetchAllParties() {
+  return fetch(allPartyUrl)
+    .then(data => data.json())
+    .then(partyListData)
+}
+
+function partyListData(data) {
+  let firstParty = data[0];
+  let firstPartyId = firstParty[Object.keys(firstParty)[0]];
+  localStorage.setItem('chosenPartyId', firstPartyId)
+
+  out(firstPartyId + " Her outter vi vores data")
+
+  for (let i = 0; i < data.length; i++) {
+
+    let party = data[i];
+
+    let dropdown = document.getElementById("selectDropdown");
+    let option = document.createElement("option");
+    option.innerText = party.partyName;
+    option.setAttribute("class", "select-dropdown__list-item");
+    option.setAttribute("value", party.partyId);
+    dropdown.appendChild(option);
+
+
+    dropdown.addEventListener("change",(event) => {
+      const selectIndex = dropdown.selectedIndex;
+      let optionIndex = dropdown.options[selectIndex]
+      party.partyId = optionIndex.value
+      out(optionIndex.value);
+      localStorage.setItem("chosenPartyId", optionIndex.value)
+
+    })
+  }
+}
 
 function fetchParty() {
   return fetch(partyUrl)
@@ -14,10 +51,11 @@ function partyData(data) {
   let party = data;
 
   let htmlTitle = document.getElementById('partyHtmlTitle')
+  htmlTitle.innerText = party.partyName;
+
   let partyTitleName = document.getElementById('partyTitleName');
   partyTitleName.setAttribute('value', party.partyName);
   partyTitleName.innerText = party.partyName;
-  htmlTitle.append(partyTitleName);
 
 
 }
@@ -74,5 +112,6 @@ function partyCandidatesDataList(data) {
   })
 }
 
+fetchAllParties()
 fetchParty();
 fetchPartyCandidates();

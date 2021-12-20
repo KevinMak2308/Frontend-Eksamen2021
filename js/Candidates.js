@@ -1,11 +1,10 @@
 const out = (...str) => console.log(...str);
-const candidatesUrl = 'http://localhost:8080/partyCandidates/'
 const chosenPartyId = localStorage.getItem('chosenPartyId');
+const partyCandidatesUrl = 'http://localhost:8080/partyCandidates/' + chosenPartyId
 
 
 function fetchCandidates() {
-  let partyCandidateUrl = candidatesUrl + chosenPartyId;
-  return fetch(partyCandidateUrl)
+  return fetch(partyCandidatesUrl)
     .then(data => data.json())
     .then(candidateData)
 }
@@ -15,7 +14,7 @@ const candidateDivWrapper = document.getElementById('candidateDivWrapper');
 function candidateData(data) {
   for (let i = 0; 0 < data.length; i++) {
 
-    let candidate = data[i];
+    const candidate = data[i];
 
     let candidateColDiv = document.createElement('div');
     candidateColDiv.classList.add('col-md-4');
@@ -35,15 +34,14 @@ function candidateData(data) {
     candidateRowDiv.append(candidateDiv)
 
     let candidateName = document.createElement('span')
-    candidateName.setAttribute('value', candidate.candidateName)
-    candidateName.innerText = "Candidate  " + candidate.candidateName
+    candidateName.setAttribute('value', candidate.candidateName);
+    candidateName.innerText = candidate.candidateName;
 
-    out(candidateName)
+    out(candidate.candidateName + " : Her out jeg min value som den brokker sig over")
 
     let partyName = document.createElement('h6')
-    partyName.classList.add('text-black-50')
-    partyName.setAttribute('value', candidate.party.partyName)
-    partyName.innerText = "Party  " + candidate.party.partyName;
+    partyName.setAttribute('value', candidate.party.partyName);
+    partyName.innerHTML = candidate.party.partyName;
 
     candidateDiv.append(candidateName)
     candidateDiv.append(partyName)
@@ -60,6 +58,7 @@ function candidateData(data) {
     candidateName.addEventListener('click', event => {
       candidateInput.value = candidate.candidateName;
       candidateName.replaceWith(candidateInput)
+
     })
 
     const updateButton = document.createElement('button')
@@ -69,6 +68,7 @@ function candidateData(data) {
     candidateLinkDiv.append(updateButton)
 
     updateButton.onclick = function () {
+      localStorage.setItem('chosenPartyId', candidate.party.partyId);
       candidate.candidateName = candidateInput.value;
       updateCandidate(candidate)
     }

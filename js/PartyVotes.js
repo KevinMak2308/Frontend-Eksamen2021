@@ -37,7 +37,7 @@ function partyListData(data) {
 
     let votePercentageTableRow = row.insertCell(2);
     let votePercentageTd = document.createElement('td')
-    votePercentageTd.innerText = party.partyVotePercentage + "%";
+    votePercentageTd.innerText = Math.floor(party.partyVotePercentage) + "%";
     votePercentageTd.setAttribute('value', party.partyVotePercentage);
 
     votePercentageTableRow.append(votePercentageTd);

@@ -1,0 +1,43 @@
+html, body {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAABlBMVEUAKFkAKFjaPupOAAAAUklEQVR4nO3QQQ0AAAjEsMO/aUTwgJBWwbIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+KG2A64ajGnIMQAD1e94ywAAAABJRU5ErkJggg==");
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+}
+
+.d-flex, .flex-row, .mb-3 {
+  margin-left: 0px;
+}
+
+.card {
+  background: #ffffff;
+  margin-bottom: 12px;
+}
+
+.col-md-4 {
+  margin-top: 27px;
+  margin-bottom: 12px;
+}
+
+
+.updateButtonProject {
+  height: fit-content;
+  max-width: 72px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  margin: 6px;
+}
+
+.deleteButtonProject {
+  position: absolute;
+  right: 0px;
+  height: fit-content;
+  max-width: 72px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  margin-top: 6px;
+  margin-right: 22px;
+}

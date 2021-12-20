@@ -13,9 +13,11 @@ function fetchParty() {
 function partyData(data) {
   let party = data;
 
+  let htmlTitle = document.getElementById('partyHtmlTitle')
   let partyTitleName = document.getElementById('partyTitleName');
   partyTitleName.setAttribute('value', party.partyName);
   partyTitleName.innerText = party.partyName;
+  htmlTitle.append(partyTitleName);
 
 
 }
